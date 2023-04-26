@@ -1,0 +1,41 @@
+#!/bin/bash
+
+PS3="* Bash Commands *"
+options=("List files" "Show free disk space" "Show system path" "Display command history" "Backup files" "Exit")
+
+menu()
+{
+    echo -------------------
+    echo Choose your option:
+    echo -------------------
+    select opt in "${options[@]}" ;do 
+        case $opt in 
+            "List files")
+                echo "List of files in current directory"
+                ls;;
+
+            "Show free disk space")
+                echo "Show free disk space available"
+                df -h;;
+
+            "Show system path")
+                echo "Show system path:" 
+                $PATH;;
+
+            "Display command history")
+                echo "Display command history:"
+                history;;
+
+            "Backup files")
+                echo "Backup files:"
+                ls *~;;
+
+            "Exit")
+                echo "exiting..."
+                break;;
+            *)
+                echo "please select option from the menu";;
+        esac 
+    done 
+}
+menu
